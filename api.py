@@ -9,12 +9,10 @@ def sayHelloword():
     return jsonify(data)
 @app.route('/users', methods=['GET']) 
 def returnUserinfo():
-    id=request.args.get("id")
-    
-    pass
-users={
+   id=request.args.get("id")
+   users={
         1: {
-          "name":"Alex",
+          "name":"Alex_",
           "age":25   
         },
 
@@ -27,9 +25,11 @@ users={
           "name":"Egor",
           "age":15   
         },
-
-
     }
-
+   user_id = int(id)
+   user = users.get(user_id)
+   return jsonify(user)
+        
+  
 if __name__ == "__main__": 
     app.run(debug=True)
